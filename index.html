@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BVME Chad Ranking</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07070b;
+            --card: rgba(20, 20, 28, 0.78);
+            --card-hover: #181820;
+            --border: rgba(255,255,255,0.09);
+            --text: #ffffff;
+            --muted: #858592;
+            --purple: #a855f7;
+            --purple-dark: #7c3aed;
+            --green: #22c55e;
+            --red: #ef4444;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #7c3aed;
+            opacity: 0.10;
+            filter: blur(150px);
+            border-radius: 50%;
+            top: -250px;
+            left: -150px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #9333ea;
+            opacity: 0.08;
+            filter: blur(150px);
+            border-radius: 50%;
+            right: -250px;
+            bottom: -200px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 75px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            background: rgba(7,7,11,0.75);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            color: var(--purple);
+            margin-right: 6px;
+        }
+
+        .logo span:last-child {
+            color: var(--purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+        }
+
+        .nav-btn {
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            padding: 10px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            color: white;
+            background: rgba(168,85,247,0.12);
+        }
+
+        .theme-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* PAGES */
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            padding: 110px 25px 90px;
+        }
+
+        .hero-tag {
+            color: var(--purple);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 11vw, 145px);
+            line-height: 0.83;
+            letter-spacing: -8px;
+            font-weight: 900;
+        }
+
+        .outline {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+
+        .hero-description {
+            margin-top: 35px;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* COUNTDOWN */
+
+        .countdown {
+            margin-top: 35px;
+            display: inline-block;
+            padding: 18px 24px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            background: var(--card);
+        }
+
+        .countdown small {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .countdown strong {
+            display: block;
+            margin-top: 6px;
+            font-size: 22px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 25px;
+        }
+
+        .section-label {
+            color: var(--purple);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 35px;
+            margin-top: 7px;
+        }
+
+        /* PODIUM */
+
+        .podium {
+            margin-top: 45px;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr 1fr;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .podium-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .podium-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168,85,247,0.5);
+        }
+
+        .podium-card.first {
+            padding-top: 50px;
+            padding-bottom: 45px;
+        }
+
+        .podium-card img {
+            width: 85px;
+            height: 85px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--purple);
+            margin-bottom: 15px;
+        }
+
+        .podium-card.first img {
+            width: 110px;
+            height: 110px;
+        }
+
+        .podium-rank {
+            color: var(--purple);
+            font-size: 14px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .podium-card h3 {
+            font-size: 20px;
+        }
+
+        .podium-card p {
+            color: var(--muted);
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .podium-score {
+            font-size: 26px;
+            font-weight: 900;
+            margin-top: 15px;
+        }
+
+        /* STATS */
+
+        .stats {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 25px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            padding: 20px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 15px;
+        }
+
+        .stat-icon {
+            font-size: 22px;
+        }
+
+        .stat small {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+
+        .stat strong {
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* LEADERBOARD */
+
+        .board-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .search {
+            width: 250px;
+            padding: 13px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: white;
+            outline: none;
+        }
+
+        .search:focus {
+            border-color: var(--purple);
+        }
+
+        /* CATEGORIES */
+
+        .categories {
+            display: flex;
+            gap: 8px;
+            margin: 30px 0 15px;
+            overflow-x: auto;
+        }
+
+        .category {
+            white-space: nowrap;
+            padding: 9px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .category:hover,
+        .category.active {
+            background: var(--purple);
+            border-color: var(--purple);
+            color: white;
+        }
+
+        /* RANK ROW */
+
+        .leaderboard {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .rank-row {
+            display: grid;
+            grid-template-columns: 60px 55px 1fr 80px 70px;
+            align-items: center;
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .rank-row:hover {
+            transform: translateX(5px);
+            background: var(--card-hover);
+        }
+
+        .rank-number {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--muted);
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .name {
+            font-weight: 800;
+        }
+
+        .username {
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        .score {
+            text-align: right;
+            font-size: 17px;
+            font-weight: 900;
+        }
+
+        .movement {
+            text-align: right;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .up {
+            color: var(--green);
+        }
+
+        .down {
+            color: var(--red);
+        }
+
+        .same {
+            color: var(--muted);
+        }
+
+        /* OTHER PAGES */
+
+        .other-page {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        .other-page h1 {
+            font-size: clamp(55px, 9vw, 110px);
+            line-height: 0.88;
+            letter-spacing: -5px;
+            margin-top: 15px;
+        }
+
+        .other-page h1 span {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+
+        .other-page > p {
+            color: var(--muted);
+            margin-top: 25px;
+        }
+
+        /* VOTE */
+
+        .vote-arena {
+            margin-top: 65px;
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .vote-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 45px 30px;
+            text-align: center;
+        }
+
+        .vote-card img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--purple);
+        }
+
+        .vote-card h2 {
+            margin-top: 20px;
+        }
+
+        .vote-card p {
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        .vote-button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--purple);
+            color: white;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .vote-button:hover {
+            background: var(--purple-dark);
+        }
+
+        .vs {
+            text-align: center;
+            color: var(--muted);
+            font-weight: 900;
+        }
+
+        .next-match {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 22px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .vote-message {
+            text-align: center;
+            color: var(--purple);
+            margin-top: 15px;
+        }
+
+        /* HALL OF FAME */
+
+        .hall-grid {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+        }
+
+        .hall-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .hall-card img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .hall-card .season {
+            color: var(--purple);
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-top: 15px;
+        }
+
+        .hall-card h2 {
+            margin-top: 8px;
+        }
+
+        .hall-card p {
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* MODAL */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 430px;
+            max-width: 100%;
+            padding: 40px;
+            background: #111118;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 18px;
+            top: 12px;
+            border: 0;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .modal-box > img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--purple);
+        }
+
+        .modal-rank {
+            color: var(--purple);
+            font-weight: 900;
+            margin-top: 15px;
+        }
+
+        .modal-box h2 {
+            font-size: 30px;
+            margin-top: 5px;
+        }
+
+        .modal-box > p {
+            color: var(--muted);
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 5px;
+            margin-top: 30px;
+        }
+
+        .profile-stat {
+            background: #19191f;
+            padding: 10px 3px;
+            border-radius: 9px;
+        }
+
+        .profile-stat small {
+            display: block;
+            font-size: 7px;
+            color: var(--muted);
+        }
+
+        .profile-stat strong {
+            font-size: 15px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 70px 20px;
+            font-size: 10px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:700px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 13px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 70px;
+            }
+
+            .hero h1 {
+                letter-spacing: -4px;
+            }
+
+            .podium {
+                grid-template-columns: 1fr;
+            }
+
+            .podium-card.first {
+                order: -1;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .board-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search {
+                width: 100%;
+            }
+
+            .rank-row {
+                grid-template-columns: 35px 45px 1fr 55px;
+            }
+
+            .movement {
+                display: none;
+            }
+
+            .vote-arena {
+                grid-template-columns: 1fr;
+            }
+
+            .vs {
+                padding: 5px;
+            }
+
+            .hall-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <span class="logo-icon">◆</span>
+
+        BVME
+        <span>CHAD RANKING</span>
+
+    </div>
+
+    <div class="nav-links">
+
+        <button
+            class="nav-btn active"
+            data-page="home">
+            Leaderboard
+        </button>
+
+        <button
+            class="nav-btn"
+            data-page="vote">
+            Vote
+        </button>
+
+        <button
+            class="nav-btn"
+            data-page="hall">
+            Hall of Fame
+        </button>
+
+    </div>
+
+    <button
+        class="theme-btn"
+        id="themeButton">
+        ☾
+    </button>
+
+</nav>
+
+
+<!-- HOME PAGE -->
+
+<main id="homePage" class="page active">
+
+    <section class="hero">
+
+        <div class="hero-tag">
+            ● BVME · SEASON 01
+        </div>
+
+        <h1>
+
+            BVME<br>
+
+            <span class="outline">
+                CHAD RANKING
+            </span>
+
+        </h1>
+
+        <p class="hero-description">
+
+            The unofficial leaderboard for BVME.<br>
+
+            Rank. Vote. Dominate.
+
+        </p>
+
+        <div class="countdown">
+
+            <small>
+                WEEKLY RESET
+            </small>
+
+            <strong id="countdown">
+                Loading...
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOP 3 -->
+
+    <section class="container">
+
+        <div class="section-label">
+            THE ELITE
+        </div>
+
+        <h2 class="section-title">
+            TOP 3 CHADS
+        </h2>
+
+        <div
+            class="podium"
+            id="podium">
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                🔥
+            </div>
+
+            <small>
+                BIGGEST RISER
+            </small>
+
+            <strong id="riser">
+                —
+            </strong>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📉
+            </div>
+
+            <small>
+                BIGGEST DROP
+            </small>
+
+            <strong id="drop">
+                —
+            </strong>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <small>
+                CLASS SIZE
+            </small>
+
+            <strong id="classSize">
+                —
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEADERBOARD -->
+
+    <section class="container">
+
+        <div class="board-header">
+
+            <div>
+
+                <div class="section-label">
+                    THE BOARD
+                </div>
+
+                <h2 class="section-title">
+                    CHAD LEADERBOARD
+                </h2>
+
+            </div>
+
+            <input
+                class="search"
+                id="search"
+                type="text"
+                placeholder="Search classmate..."
+            >
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+
+        <div class="categories">
+
+            <button
+                class="category active"
+                data-category="overall">
+                Overall
+            </button>
+
+            <button
+                class="category"
+                data-category="psl">
+                PSL
+            </button>
+
+            <button
+                class="category"
+                data-category="appeal">
+                Appeal
+            </button>
+
+            <button
+                class="category"
+                data-category="hair">
+                Hair
+            </button>
+
+            <button
+                class="category"
+                data-category="frame">
+                Frame
+            </button>
+
+            <button
+                class="category"
+                data-category="style">
+                Style
+            </button>
+
+        </div>
+
+
+        <div
+            class="leaderboard"
+            id="leaderboard">
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- VOTE PAGE -->
+
+<main id="votePage" class="page">
+
+    <section class="other-page">
+
+        <div class="section-label">
+            COMMUNITY VOTE
+        </div>
+
+        <h1>
+
+            WHO DESERVES<br>
+
+            <span>
+                THE CHAD TITLE?
+            </span>
+
+        </h1>
+
+        <p>
+
+            Choose one.
+            Every vote changes the leaderboard.
+
+        </p>
+
+
+        <div class="vote-arena">
+
+            <div
+                class="vote-card"
+                id="leftVote">
+
+                <img
+                    src=""
+                    alt="Player"
+                >
+
+                <h2>
+                    Player
+                </h2>
+
+                <p>
+                    Rank #1
+                </p>
+
+                <button class="vote-button">
+                    VOTE
+                </button>
+
+            </div>
+
+
+            <div class="vs">
+                VS
+            </div>
+
+
+            <div
+                class="vote-card"
+                id="rightVote">
+
+                <img
+                    src=""
+                    alt="Player"
+                >
+
+                <h2>
+                    Player
+                </h2>
+
+                <p>
+                    Rank #2
+                </p>
+
+                <button class="vote-button">
+                    VOTE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="next-match"
+            id="nextMatch">
+
+            NEXT MATCH →
+
+        </button>
+
+
+        <p
+            class="vote-message"
+            id="voteMessage">
+        </p>
+
+    </section>
+
+</main>
+
+
+<!-- HALL OF FAME -->
+
+<main id="hallPage" class="page">
+
+    <section class="other-page">
+
+        <div class="section-label">
+            LEGENDS ONLY
+        </div>
+
+        <h1>
+
+            BVME HALL<br>
+
+            <span>
+                OF FAME
+            </span>
+
+        </h1>
+
+        <p>
+
+            The people who dominated
+            previous seasons.
+
+        </p>
+
+
+        <div
+            class="hall-grid"
+            id="hallGrid">
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- PROFILE MODAL -->
+
+<div
+    class="modal"
+    id="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            id="close">
+            ×
+        </button>
+
+        <img
+            id="modalImage"
+            src=""
+            alt=""
+        >
+
+        <div class="modal-rank">
+
+            RANK #
+
+            <span id="modalRank">
+                1
+            </span>
+
+        </div>
+
+        <h2 id="modalName">
+            Player
+        </h2>
+
+        <p id="modalUsername">
+            @player
+        </p>
+
+
+        <div class="profile-stats">
+
+            <div class="profile-stat">
+
+                <small>
+                    PSL
+                </small>
+
+                <strong id="modalPsl">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="profile-stat">
+
+                <small>
+                    APPEAL
+                </small>
+
+                <strong id="modalAppeal">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="profile-stat">
+
+                <small>
+                    HAIR
+                </small>
+
+                <strong id="modalHair">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="profile-stat">
+
+                <small>
+                    FRAME
+                </small>
+
+                <strong id="modalFrame">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="profile-stat">
+
+                <small>
+                    STYLE
+                </small>
+
+                <strong id="modalStyle">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    BVME CHAD RANKING © 2026
+    · Made for the class
+
+</footer>
+
+
+<script>
+
+
+/* =====================================
+   YOUR CLASSMATES
+===================================== */
+
+const people = [
+
+    {
+        id: 1,
+
+        name: "Riyan Davis",
+
+        username: "The Honoured One",
+
+        image:
+            "https://i.pravatar.cc/300?img=12",
+
+        overall: 7.4,
+
+        psl: 9.0,
+
+        appeal: 9.1,
+
+        hair: 7.9,
+
+        frame: 7.0,
+
+        style: 8.7,
+
+        previousRank: 1
+    },
+
+
+    {
+        id: 2,
+
+        name: "Sidharth Manoj",
+
+        username: "The Athlete",
+
+        image:
+            "https://i.pravatar.cc/300?img=13",
+
+        overall: 7.0,
+
+        psl: 6.5,
+
+        appeal: 8.8,
+
+        hair: 8.9,
+
+        frame: 8.2,
+
+        style: 8.7,
+
+        previousRank: 3
+    },
+
+
+    {
+        id: 3,
+
+        name: "Niranjan N Pillai",
+
+        username: "The All rounder",
+
+        image:
+            "https://i.pravatar.cc/300?img=14",
+
+        overall: 6.9,
+
+        psl: 7.0,
+
+        appeal: 8.4,
+
+        hair: 7.7,
+
+        frame: 8.9,
+
+        style: 8.7,
+
+        previousRank: 2
+    },
+
+
+    {
+        id: 4,
+
+        name: "Adwaith Dev",
+
+        username: "Pessi",
+
+        image:
+            "https://i.pravatar.cc/300?img=15",
+
+        overall: 6.5,
+
+        psl: 4.0,
+
+        appeal: 9.0,
+
+        hair: 7.0,
+
+        frame: 7.0,
+
+        style: 7.0,
+
+        previousRank: 5
+    },
+
+
+    {
+        id: 5,
+
+        name: "Aman Rajesh",
+
+        username: "Korean",
+
+        image:
+            "https://i.pravatar.cc/300?img=16",
+
+        overall: 6.4,
+
+        psl: 5.0,
+
+        appeal: 8.4,
+
+        hair: 9.1,
+
+        frame: 5.0,
+
+        style: 7.0,
+
+        previousRank: 7
+    },
+
+
+    {
+        id: 6,
+
+        name: "Abhinav S Kammath",
+
+        username: "Autistic",
+
+        image:
+            "https://i.pravatar.cc/300?img=17",
+
+        overall: 6.3,
+
+        psl: 7.4,
+
+        appeal: 6.2,
+
+        hair: 6.5,
+
+        frame: 6.0,
+
+        style: 3.0,
+
+        previousRank: 6
+    },
+
+
+    {
+        id: 7,
+
+        name: "Neeraj M Nair",
+
+        username: "Dadbot",
+
+        image:
+            "https://i.pravatar.cc/300?img=18",
+
+        overall: 6.1,
+
+        psl: 6.4,
+
+        appeal: 7.0,
+
+        hair: 8.5,
+
+        frame: 8.6,
+
+        style: 3.0,
+
+        previousRank: 9
+    },
+
+
+    {
+        id: 8,
+
+        name: "Lakshman",
+
+        username: "Prince",
+
+        image:
+            "https://i.pravatar.cc/300?img=19",
+
+        overall: 6.0,
+
+        psl: 4.0,
+
+        appeal: 6.8,
+
+        hair: 6.7,
+
+        frame: 6.5,
+
+        style: 7.7,
+
+        previousRank: 8
+    },
+
+
+    {
+        id: 9,
+
+        name: "Kedhar",
+
+        username: "Blackesh",
+
+        image:
+            "https://i.pravatar.cc/300?img=20",
+
+        overall: 5.8,
+
+        psl: 6.0,
+
+        appeal: 7.8,
+
+        hair: 8.9,
+
+        frame: 7.4,
+
+        style: 6.2,
+
+        previousRank: 11
+    },
+
+
+    {
+        id: 10,
+
+        name: "Aadityan",
+
+        username: "Heart_Broken",
+
+        image:
+            "https://i.pravatar.cc/300?img=21",
+
+        overall: 5.6,
+
+        psl: 4.0,
+
+        appeal: 6.8,
+
+        hair: 8.6,
+
+        frame: 6.0,
+
+        style: 6.8,
+
+        previousRank: 10
+    }
+
+];
+
+
+/* =====================================
+   CURRENT CATEGORY
+===================================== */
+
+let currentCategory = "overall";
+
+
+/* =====================================
+   SORT PLAYERS
+===================================== */
+
+function sortedPeople() {
+
+    return [...people].sort(
+
+        function(a, b) {
+
+            return (
+                b[currentCategory]
+                -
+                a[currentCategory]
+            );
+
+        }
+
+    );
+
+}
+
+
+/* =====================================
+   LEADERBOARD
+===================================== */
+
+function renderLeaderboard() {
+
+    const board =
+        document.getElementById(
+            "leaderboard"
+        );
+
+    const search =
+        document.getElementById(
+            "search"
+        ).value.toLowerCase();
+
+    board.innerHTML = "";
+
+    const sorted =
+        sortedPeople();
+
+    sorted.forEach(
+
+        function(person, index) {
+
+            if (
+
+                !person.name
+                    .toLowerCase()
+                    .includes(search)
+
+                &&
+
+                !person.username
+                    .toLowerCase()
+                    .includes(search)
+
+            ) {
+
+                return;
+
+            }
+
+
+            const rank =
+                index + 1;
+
+
+            let movement;
+
+
+            if (
+                person.previousRank
+                >
+                rank
+            ) {
+
+                movement =
+                    '<span class="up">↑ ' +
+                    (
+                        person.previousRank
+                        -
+                        rank
+                    ) +
+                    '</span>';
+
+            }
+
+            else if (
+                person.previousRank
+                <
+                rank
+            ) {
+
+                movement =
+                    '<span class="down">↓ ' +
+                    (
+                        rank
+                        -
+                        person.previousRank
+                    ) +
+                    '</span>';
+
+            }
+
+            else {
+
+                movement =
+                    '<span class="same">—</span>';
+
+            }
+
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "rank-row";
+
+
+            row.innerHTML = `
+
+                <div class="rank-number">
+                    #${rank}
+                </div>
+
+                <img
+                    class="avatar"
+                    src="${person.image}"
+                    alt="${person.name}"
+                >
+
+                <div>
+
+                    <div class="name">
+                        ${person.name}
+                    </div>
+
+                    <div class="username">
+                        ${person.username}
+                    </div>
+
+                </div>
+
+                <div class="score">
+                    ${person[currentCategory]}
+                </div>
+
+                <div class="movement">
+                    ${movement}
+                </div>
+
+            `;
+
+
+            row.onclick =
+                function() {
+
+                    openProfile(person);
+
+                };
+
+
+            board.appendChild(row);
+
+        }
+
+    );
+
+}
+
+
+/* =====================================
+   PODIUM
+===================================== */
+
+function renderPodium() {
+
+    const podium =
+        document.getElementById(
+            "podium"
+        );
+
+    const sorted =
+        sortedPeople();
+
+    const players = [
+
+        sorted[1],
+
+        sorted[0],
+
+        sorted[2]
+
+    ];
+
+    podium.innerHTML = "";
+
+    players.forEach(
+
+        function(person) {
+
+            if (!person) {
+                return;
+            }
+
+
+            const rank =
+                sorted.findIndex(
+
+                    function(p) {
+
+                        return (
+                            p.id
+                            ===
+                            person.id
+                        );
+
+                    }
+
+                ) + 1;
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "podium-card " +
+                (
+                    rank === 1
+                    ? "first"
+                    : ""
+                );
+
+
+            card.innerHTML = `
+
+                <div class="podium-rank">
+                    #${rank}
+                </div>
+
+                <img
+                    src="${person.image}"
+                    alt="${person.name}"
+                >
+
+                <h3>
+                    ${person.name}
+                </h3>
+
+                <p>
+                    ${person.username}
+                </p>
+
+                <div class="podium-score">
+                    ${person[currentCategory]}
+                </div>
+
+            `;
+
+
+            card.onclick =
+                function() {
+
+                    openProfile(person);
+
+                };
+
+
+            podium.appendChild(card);
+
+        }
+
+    );
+
+}
+
+
+/* =====================================
+   STATS
+===================================== */
+
+function renderStats() {
+
+    const sorted =
+        sortedPeople();
+
+
+    document.getElementById(
+        "classSize"
+    ).textContent =
+        people.length;
+
+
+    let riser =
+        people[0];
+
+
+    let drop =
+        people[0];
+
+
+    people.forEach(
+
+        function(person) {
+
+            const rank =
+                sorted.findIndex(
+
+                    function(p) {
+
+                        return (
+                            p.id
+                            ===
+                            person.id
+                        );
+
+                    }
+
+                ) + 1;
+
+
+            const change =
+                person.previousRank
+                -
+                rank;
+
+
+            const riserRank =
+                sorted.findIndex(
+
+                    function(p) {
+
+                        return (
+                            p.id
+                            ===
+                            riser.id
+                        );
+
+                    }
+
+                ) + 1;
+
+
+            const dropRank =
+                sorted.findIndex(
+
+                    function(p) {
+
+                        return (
+                            p.id
+                            ===
+                            drop.id
+                        );
+
+                    }
+
+                ) + 1;
+
+
+            const riserChange =
+                riser.previousRank
+                -
+                riserRank;
+
+
+            const dropChange =
+                drop.previousRank
+                -
+                dropRank;
+
+
+            if (
+                change
+                >
+                riserChange
+            ) {
+
+                riser =
+                    person;
+
+            }
+
+
+            if (
+                change
+                <
+                dropChange
+            ) {
+
+                drop =
+                    person;
+
+            }
+
+        }
+
+    );
+
+
+    document.getElementById(
+        "riser"
+    ).textContent =
+        riser.name;
+
+
+    document.getElementById(
+        "drop"
+    ).textContent =
+        drop.name;
+
+}
+
+
+/* =====================================
+   PROFILE MODAL
+===================================== */
+
+function openProfile(person) {
+
+    const sorted =
+        sortedPeople();
+
+
+    const rank =
+        sorted.findIndex(
+
+            function(p) {
+
+                return (
+                    p.id
+                    ===
+                    person.id
+                );
+
+            }
+
+        ) + 1;
+
+
+    document.getElementById(
+        "modalImage"
+    ).src =
+        person.image;
+
+
+    document.getElementById(
+        "modalName"
+    ).textContent =
+        person.name;
+
+
+    document.getElementById(
+        "modalUsername"
+    ).textContent =
+        person.username;
+
+
+    document.getElementById(
+        "modalRank"
+    ).textContent =
+        rank;
+
+
+    document.getElementById(
+        "modalPsl"
+    ).textContent =
+        person.psl;
+
+
+    document.getElementById(
+        "modalAppeal"
+    ).textContent =
+        person.appeal;
+
+
+    document.getElementById(
+        "modalHair"
+    ).textContent =
+        person.hair;
+
+
+    document.getElementById(
+        "modalFrame"
+    ).textContent =
+        person.frame;
+
+
+    document.getElementById(
+        "modalStyle"
+    ).textContent =
+        person.style;
+
+
+    document.getElementById(
+        "modal"
+    ).classList.add("show");
+
+}
+
+
+/* =====================================
+   CLOSE MODAL
+===================================== */
+
+document.getElementById(
+    "close"
+).onclick = function() {
+
+    document.getElementById(
+        "modal"
+    ).classList.remove("show");
+
+};
+
+
+document.getElementById(
+    "modal"
+).onclick = function(event) {
+
+    if (
+        event.target === this
+    ) {
+
+        this.classList.remove(
+            "show"
+        );
+
+    }
+
+};
+
+
+/* =====================================
+   CATEGORY BUTTONS
+===================================== */
+
+document
+    .querySelectorAll(".category")
+    .forEach(
+
+        function(button) {
+
+            button.onclick =
+                function() {
+
+                    document
+                        .querySelectorAll(
+                            ".category"
+                        )
+                        .forEach(
+
+                            function(btn) {
+
+                                btn.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+                            }
+
+                        );
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    currentCategory =
+                        this.dataset.category;
+
+
+                    renderAll();
+
+                };
+
+        }
+
+    );
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+document.getElementById(
+    "search"
+).addEventListener(
+
+    "input",
+
+    function() {
+
+        renderLeaderboard();
+
+    }
+
+);
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+document
+    .querySelectorAll(".nav-btn")
+    .forEach(
+
+        function(button) {
+
+            button.onclick =
+                function() {
+
+                    document
+                        .querySelectorAll(
+                            ".nav-btn"
+                        )
+                        .forEach(
+
+                            function(btn) {
+
+                                btn.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+                            }
+
+                        );
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    document
+                        .querySelectorAll(
+                            ".page"
+                        )
+                        .forEach(
+
+                            function(page) {
+
+                                page.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+                            }
+
+                        );
+
+
+                    const page =
+                        document.getElementById(
+
+                            this.dataset.page
+                            +
+                            "Page"
+
+                        );
+
+
+                    page.classList.add(
+                        "active"
+                    );
+
+
+                    if (
+                        this.dataset.page
+                        ===
+                        "vote"
+                    ) {
+
+                        setupVote();
+
+                    }
+
+
+                    if (
+                        this.dataset.page
+                        ===
+                        "hall"
+                    ) {
+
+                        renderHall();
+
+                    }
+
+                };
+
+        }
+
+    );
+
+
+/* =====================================
+   VOTING
+===================================== */
+
+let votePlayers = [];
+
+
+function setupVote() {
+
+    const shuffled =
+        [...people].sort(
+
+            function() {
+
+                return Math.random() - 0.5;
+
+            }
+
+        );
+
+
+    votePlayers =
+        shuffled.slice(0, 2);
+
+
+    showVotePlayers();
+
+}
+
+
+function showVotePlayers() {
+
+    if (
+        votePlayers.length
+        <
+        2
+    ) {
+
+        return;
+
+    }
+
+
+    const left =
+        document.getElementById(
+            "leftVote"
+        );
+
+
+    const right =
+        document.getElementById(
+            "rightVote"
+        );
+
+
+    left.querySelector(
+        "img"
+    ).src =
+        votePlayers[0].image;
+
+
+    left.querySelector(
+        "h2"
+    ).textContent =
+        votePlayers[0].name;
+
+
+    left.querySelector(
+        "p"
+    ).textContent =
+        "Rank #" +
+        (
+            sortedPeople()
+                .findIndex(
+
+                    function(p) {
+
+                        return (
+                            p.id
+                            ===
+                            votePlayers[0].id
+                        );
+
+                    }
+
+                )
+            + 1
+        );
+
+
+    right.querySelector(
+        "img"
+    ).src =
+        votePlayers[1].image;
+
+
+    right.querySelector(
+        "h2"
+    ).textContent =
+        votePlayers[1].name;
+
+
+    right.querySelector(
+        "p"
+    ).textContent =
+        "Rank #" +
+        (
+            sortedPeople()
+                .findIndex(
+
+                    function(p) {
+
+                        return (
+                            p.id
+                            ===
+                            votePlayers[1].id
+                        );
+
+                    }
+
+                )
+            + 1
+        );
+
+
+    left.querySelector(
+        ".vote-button"
+    ).onclick =
+        function() {
+
+            vote(
+                votePlayers[0]
+            );
+
+        };
+
+
+    right.querySelector(
+        ".vote-button"
+    ).onclick =
+        function() {
+
+            vote(
+                votePlayers[1]
+            );
+
+        };
+
+}
+
+
+/* =====================================
+   VOTE
+===================================== */
+
+function vote(person) {
+
+    person.overall =
+        Math.min(
+
+            100,
+
+            person.overall + 1
+
+        );
+
+
+    document.getElementById(
+        "voteMessage"
+    ).textContent =
+        "🔥 You voted for " +
+        person.name;
+
+
+    renderAll();
+
+}
+
+
+/* =====================================
+   NEXT MATCH
+===================================== */
+
+document.getElementById(
+    "nextMatch"
+).onclick = function() {
+
+    setupVote();
+
+};
+
+
+/* =====================================
+   HALL OF FAME
+===================================== */
+
+function renderHall() {
+
+    const hall =
+        document.getElementById(
+            "hallGrid"
+        );
+
+
+    hall.innerHTML = "";
+
+
+    sortedPeople()
+        .slice(0, 6)
+        .forEach(
+
+            function(person, index) {
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "hall-card";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${person.image}"
+                        alt="${person.name}"
+                    >
+
+                    <div class="season">
+                        SEASON 01
+                    </div>
+
+                    <h2>
+                        #${index + 1}
+                        ${person.name}
+                    </h2>
+
+                    <p>
+                        ${person.overall}
+                        points
+                    </p>
+
+                `;
+
+
+                hall.appendChild(card);
+
+            }
+
+        );
+
+}
+
+
+/* =====================================
+   COUNTDOWN
+===================================== */
+
+function updateCountdown() {
+
+    const now =
+        new Date();
+
+
+    const next =
+        new Date();
+
+
+    const currentDay =
+        now.getDay();
+
+
+    let days =
+        (8 - currentDay) % 7;
+
+
+    if (
+        days === 0
+    ) {
+
+        days = 7;
+
+    }
+
+
+    next.setDate(
+        now.getDate() + days
+    );
+
+
+    next.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    const difference =
+        next - now;
+
+
+    const d =
+        Math.floor(
+
+            difference
+            /
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
+
+        );
+
+
+    const h =
+        Math.floor(
+
+            difference
+            /
+            (
+                1000 *
+                60 *
+                60
+            )
+            %
+            24
+
+        );
+
+
+    const m =
+        Math.floor(
+
+            difference
+            /
+            (
+                1000 *
+                60
+            )
+            %
+            60
+
+        );
+
+
+    document.getElementById(
+        "countdown"
+    ).textContent =
+
+        d + "d " +
+        h + "h " +
+        m + "m";
+
+}
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =====================================
+   DARK / LIGHT MODE
+===================================== */
+
+document.getElementById(
+    "themeButton"
+).onclick = function() {
+
+    const light =
+        document.body.classList.toggle(
+            "light"
+        );
+
+
+    if (light) {
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--bg",
+                "#f4f4f7"
+            );
+
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--text",
+                "#111"
+            );
+
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--muted",
+                "#666"
+            );
+
+
+        this.textContent =
+            "☀";
+
+    }
+
+    else {
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--bg",
+                "#07070b"
+            );
+
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--text",
+                "#fff"
+            );
+
+
+        document.documentElement
+            .style
+            .setProperty(
+                "--muted",
+                "#858592"
+            );
+
+
+        this.textContent =
+            "☾";
+
+    }
+
+};
+
+
+/* =====================================
+   START WEBSITE
+===================================== */
+
+function renderAll() {
+
+    renderPodium();
+
+    renderLeaderboard();
+
+    renderStats();
+
+}
+
+
+renderAll();
+
+updateCountdown();
+
+
+</script>
+
+</body>
+
+</html>
+```
