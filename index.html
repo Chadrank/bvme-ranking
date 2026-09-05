@@ -772,11 +772,7 @@
             Leaderboard
         </button>
 
-        <button
-            class="nav-btn"
-            data-page="vote">
-            Vote
-        </button>
+        <button type="button" onclick="window.location.href='https://officialchadrankings.com/'">Vote</button>
 
         <button
             class="nav-btn"
@@ -977,7 +973,7 @@
 
             <button
                 class="category"
-                data-category="style">
+                data-category="skin">
                 Style
             </button>
 
@@ -1228,7 +1224,7 @@
             <div class="profile-stat">
 
                 <small>
-                    STYLE
+                    SKIN
                 </small>
 
                 <strong id="modalStyle">
@@ -1282,7 +1278,7 @@ const people = [
 
         frame: 7.0,
 
-        style: 8.7,
+        skin: 8.7,
 
         previousRank: 1
     },
@@ -1308,7 +1304,7 @@ const people = [
 
         frame: 8.2,
 
-        style: 8.7,
+        skin: 8.7,
 
         previousRank: 3
     },
@@ -1322,7 +1318,7 @@ const people = [
         username: "The All rounder",
 
         image:
-            "https://i.pravatar.cc/300?img=14",
+            "Nirnajan.jpg",
 
         overall: 6.9,
 
@@ -1334,7 +1330,7 @@ const people = [
 
         frame: 8.9,
 
-        style: 8.7,
+        skin: 8.7,
 
         previousRank: 2
     },
@@ -1360,7 +1356,7 @@ const people = [
 
         frame: 7.0,
 
-        style: 7.0,
+        skin: 7.0,
 
         previousRank: 5
     },
@@ -1369,26 +1365,26 @@ const people = [
     {
         id: 5,
 
-        name: "Aman Rajesh",
+        name: "Akshay",
 
-        username: "Korean",
+        username: "Humble mogger",
 
         image:
             "https://i.pravatar.cc/300?img=16",
 
-        overall: 6.4,
+        overall: 5.4,
 
         psl: 5.0,
 
-        appeal: 8.4,
+        appeal: 6.1,
 
-        hair: 9.1,
+        hair: 6.1,
 
-        frame: 5.0,
+        frame: 6.8,
 
-        style: 7.0,
+        skin: 6.0,
 
-        previousRank: 7
+        previousRank: 10
     },
 
 
@@ -1412,9 +1408,9 @@ const people = [
 
         frame: 6.0,
 
-        style: 3.0,
+        skin: 3.0,
 
-        previousRank: 6
+        previousRank: 7
     },
 
 
@@ -1428,7 +1424,7 @@ const people = [
         image:
             "Neeraj.jpg",
 
-        overall: 6.1,
+        overall: 5.2,
 
         psl: 6.4,
 
@@ -1438,7 +1434,7 @@ const people = [
 
         frame: 8.6,
 
-        style: 3.0,
+        skin: 3.0,
 
         previousRank: 9
     },
@@ -1454,7 +1450,7 @@ const people = [
         image:
             "https://i.pravatar.cc/300?img=19",
 
-        overall: 6.0,
+        overall: 5.8,
 
         psl: 4.0,
 
@@ -1464,7 +1460,7 @@ const people = [
 
         frame: 6.5,
 
-        style: 7.7,
+        skin: 7.7,
 
         previousRank: 8
     },
@@ -1475,12 +1471,12 @@ const people = [
 
         name: "Kedhar",
 
-        username: "Blackesh",
+        username: "Voleyball Aura",
 
         image:
             "https://i.pravatar.cc/300?img=20",
 
-        overall: 5.8,
+        overall: 6.0,
 
         psl: 6.0,
 
@@ -1490,9 +1486,9 @@ const people = [
 
         frame: 7.4,
 
-        style: 6.2,
+        skin: 6.2,
 
-        previousRank: 11
+        previousRank: 9
     },
 
 
@@ -1501,12 +1497,12 @@ const people = [
 
         name: "Aadityan",
 
-        username: "Heart_Broken",
+        username: "Loyal Teen",
 
         image:
-            "https://i.pravatar.cc/300?img=21",
+            "aaditya.jpg",
 
-        overall: 5.6,
+        overall: 6.1,
 
         psl: 4.0,
 
@@ -1516,7 +1512,7 @@ const people = [
 
         frame: 6.0,
 
-        style: 6.8,
+        skin: 6.8,
 
         previousRank: 10
     }
@@ -2031,7 +2027,7 @@ function openProfile(person) {
     document.getElementById(
         "modalStyle"
     ).textContent =
-        person.style;
+        person.skin;
 
 
     document.getElementById(
@@ -2710,4 +2706,3 @@ updateCountdown();
 
 </html>
 ```
-
