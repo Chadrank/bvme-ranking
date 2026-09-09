@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================================================
-   GLOBAL
-========================================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -440,9 +436,6 @@ main {
     isolation: isolate;
 }
 
-
-/* animated border */
-
 .podium-card::before {
     content: "";
 
@@ -476,8 +469,7 @@ main {
 
 
 /* =========================================================
-   #1 — CHAMPION
-   GOLD + ROYAL PURPLE
+   #1
 ========================================================= */
 
 .podium-card.rank-1 {
@@ -593,8 +585,7 @@ main {
 
 
 /* =========================================================
-   #2 — PLATINUM
-   SILVER + LILAC
+   #2
 ========================================================= */
 
 .podium-card.rank-2 {
@@ -662,8 +653,7 @@ main {
 
 
 /* =========================================================
-   #3 — BRONZE
-   BRONZE + ROSE PURPLE
+   #3
 ========================================================= */
 
 .podium-card.rank-3 {
@@ -1476,9 +1466,6 @@ main {
     visibility: visible;
 }
 
-
-/* FULL SCREEN BIO PANEL */
-
 .bio-box {
     position: relative;
 
@@ -1538,9 +1525,6 @@ main {
         scale(1);
 }
 
-
-/* FULL SCREEN ANIMATED BORDER */
-
 .bio-box::before {
     content: "";
 
@@ -1584,9 +1568,6 @@ main {
     pointer-events: none;
 }
 
-
-/* INNER GLASS */
-
 .bio-box::after {
     content: "";
 
@@ -1611,7 +1592,7 @@ main {
 
 
 /* =========================================================
-   BIO FLOATING ORBS
+   BIO ORBS
 ========================================================= */
 
 .bio-orb {
@@ -2098,7 +2079,7 @@ main {
 
 
 /* =========================================================
-   MOBILE — KEEP PREMIUM EFFECTS
+   MOBILE
 ========================================================= */
 
 @media (max-width: 750px) {
@@ -2138,9 +2119,6 @@ main {
         padding-top: 45px;
     }
 
-
-    /* ---------------- PODIUM MOBILE ---------------- */
-
     .podium {
         grid-template-columns: 1fr;
 
@@ -2148,10 +2126,6 @@ main {
 
         align-items: stretch;
     }
-
-    /*
-       #1 stays strongest on phone
-    */
 
     .podium-card.rank-1 {
         order: -1;
@@ -2176,9 +2150,6 @@ main {
         transform:
             scale(1);
     }
-
-
-    /* Keep the #1 glow strong on touch devices */
 
     .podium-card.rank-1:hover,
     .podium-card.rank-1:active {
@@ -2216,15 +2187,9 @@ main {
             0 0 60px rgba(168,85,247,0.2);
     }
 
-
-    /* ---------------- STATS ---------------- */
-
     .stats-grid {
         grid-template-columns: 1fr;
     }
-
-
-    /* ---------------- LEADERBOARD ---------------- */
 
     .row {
         grid-template-columns:
@@ -2255,16 +2220,10 @@ main {
         font-size: 18px;
     }
 
-
-    /* ---------------- NORMAL PROFILE ---------------- */
-
     .profile-box {
         padding:
             30px 16px;
     }
-
-
-    /* ---------------- FULL SCREEN BIO MOBILE ---------------- */
 
     .bio-modal {
         padding: 0;
@@ -2375,9 +2334,6 @@ main {
         width: 200px;
         height: 200px;
     }
-
-
-    /* ---------------- CATEGORIES ---------------- */
 
     .categories {
         gap: 6px;
@@ -2491,13 +2447,7 @@ body.light .search {
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
 
 <nav>
 
@@ -2546,15 +2496,9 @@ body.light .search {
 
 <main>
 
-
-<!-- =========================================================
-     LEADERBOARD PAGE
-========================================================= -->
-
 <section
     class="page active"
     id="leaderboardPage">
-
 
     <div class="hero">
 
@@ -2581,8 +2525,6 @@ body.light .search {
 
     </div>
 
-
-    <!-- CATEGORIES -->
 
     <div class="categories">
 
@@ -2637,8 +2579,6 @@ body.light .search {
     </div>
 
 
-    <!-- TOP 3 -->
-
     <h2 class="section-title">
         Top 3 Chads
     </h2>
@@ -2649,8 +2589,6 @@ body.light .search {
 
     </div>
 
-
-    <!-- STATS -->
 
     <div class="stats-grid">
 
@@ -2707,8 +2645,6 @@ body.light .search {
     </div>
 
 
-    <!-- LEADERBOARD -->
-
     <h2 class="section-title">
         Leaderboard
     </h2>
@@ -2743,10 +2679,6 @@ body.light .search {
 
 </section>
 
-
-<!-- =========================================================
-     HALL OF FAME
-========================================================= -->
 
 <section
     class="page"
@@ -2791,14 +2723,9 @@ body.light .search {
 </main>
 
 
-<!-- =========================================================
-     NORMAL PROFILE MODAL
-========================================================= -->
-
 <div
     class="modal"
     id="modal">
-
 
     <div class="profile-box">
 
@@ -2809,7 +2736,6 @@ body.light .search {
             ×
 
         </button>
-
 
         <div class="profile-content">
 
@@ -2824,7 +2750,6 @@ body.light .search {
 
             </div>
 
-
             <div
                 class="modal-rank"
                 id="modalRank">
@@ -2832,7 +2757,6 @@ body.light .search {
                 RANK #1
 
             </div>
-
 
             <div
                 class="profile-name"
@@ -2842,7 +2766,6 @@ body.light .search {
 
             </div>
 
-
             <div
                 class="profile-username"
                 id="modalUsername">
@@ -2850,7 +2773,6 @@ body.light .search {
                 @player
 
             </div>
-
 
             <div class="profile-stats">
 
@@ -2864,7 +2786,6 @@ body.light .search {
 
                 </div>
 
-
                 <div class="profile-stat">
 
                     <span>APPEAL</span>
@@ -2874,7 +2795,6 @@ body.light .search {
                     </b>
 
                 </div>
-
 
                 <div class="profile-stat">
 
@@ -2886,7 +2806,6 @@ body.light .search {
 
                 </div>
 
-
                 <div class="profile-stat">
 
                     <span>FRAME</span>
@@ -2896,7 +2815,6 @@ body.light .search {
                     </b>
 
                 </div>
-
 
                 <div class="profile-stat">
 
@@ -2917,17 +2835,11 @@ body.light .search {
 </div>
 
 
-<!-- =========================================================
-     FULL SCREEN BIO
-========================================================= -->
-
 <div
     class="bio-modal"
     id="bioModal">
 
-
     <div class="bio-box">
-
 
         <button
             class="bio-close"
@@ -2937,11 +2849,9 @@ body.light .search {
 
         </button>
 
-
         <div class="bio-orb orb-one"></div>
 
         <div class="bio-orb orb-two"></div>
-
 
         <div class="bio-image-wrap">
 
@@ -2953,20 +2863,17 @@ body.light .search {
 
         </div>
 
-
         <div class="bio-badge">
 
             ✦ PLAYER BIO
 
         </div>
 
-
         <h2 id="bioName">
 
             Player
 
         </h2>
-
 
         <p
             class="bio-username"
@@ -2976,7 +2883,6 @@ body.light .search {
 
         </p>
 
-
         <p
             class="bio-text"
             id="bioText">
@@ -2984,7 +2890,6 @@ body.light .search {
             No bio added yet.
 
         </p>
-
 
         <div class="bio-mini-stats">
 
@@ -2998,7 +2903,6 @@ body.light .search {
 
             </div>
 
-
             <div>
 
                 <span>APPEAL</span>
@@ -3008,7 +2912,6 @@ body.light .search {
                 </b>
 
             </div>
-
 
             <div>
 
@@ -3020,7 +2923,6 @@ body.light .search {
 
             </div>
 
-
             <div>
 
                 <span>FRAME</span>
@@ -3030,7 +2932,6 @@ body.light .search {
                 </b>
 
             </div>
-
 
             <div>
 
@@ -3059,286 +2960,160 @@ const people = [
 
     {
         id: 1,
-
         name: "Riyan Davis",
-
         username: "The Honoured One",
-
         image: "Riyan.jpg",
-
         overall: 7.4,
-
         psl: 9.3,
-
         appeal: 9.1,
-
         hair: 7.9,
-
         frame: 7.0,
-
         skin: 8.7,
-
         previousRank: 3,
-
         bio:
             "The Honoured One. Standing at the very top of the Chad Rankings, he’s known for unmatched PSL, undeniable appeal, and pure main-character energy. A combination of confidence, presence, and style that makes #1 look effortless.He doesn’t chase the spotlight — the spotlight finds him. His presence speaks before he even says a word, and his confidence makes it clear why he holds the highest spot on the leaderboard. From his overall aura to his undeniable appeal, every category adds to the legend.Being #1 isn’t just a ranking for him; it’s a statement. While others compete for the top, The Honoured One simply holds it. The crown stays where it belongs."
-
-
     },
-
 
     {
         id: 2,
-
         name: "Sidharth Manoj",
-
         username: "The Athlete",
-
         image: "Sidhe.jpg",
-
         overall: 7.0,
-
         psl: 6.5,
-
         appeal: 8.8,
-
         hair: 8.9,
-
         frame: 8.2,
-
         skin: 8.7,
-
         previousRank: 3,
-
         bio:
             "The Athlete. Sitting comfortably at #2, his aura is built different — powered by athleticism, discipline, and natural competitive energy. He’s the kind of Chad who doesn’t need to say much; his performance does the talking.From the field to the leaderboard, he brings the same level of intensity everywhere he goes. His athletic ability gives him a presence that’s hard to ignore, while his confidence and determination keep him near the very top.He doesn’t just participate — he competes. Every move, every victory, and every challenge adds to the aura. #2 isn’t a position he settled for; it’s a spot he earned."
-
-
-
-
     },
-
 
     {
         id: 3,
-
         name: "Niranjan N Pillai",
-
         username: "The All Rounder",
-
         image: "Nirnajan.jpg",
-
         overall: 6.9,
-
         psl: 7.0,
-
         appeal: 8.4,
-
         hair: 7.7,
-
         frame: 8.9,
-
         skin: 8.7,
-
         previousRank: 2,
-
         bio:
             "The All-Rounder. Holding the #3 spot, he’s the definition of a complete Chad — bringing the perfect combination of skill, confidence, appeal, and an absolutely beast-like physique. His frame is easily one of the strongest on the leaderboard, giving him a presence that stands out the moment he walks in. Whether it’s athletic ability, overall style, or raw physical presence, he has something in every category. He’s not just good at one thing — he’s built to dominate them all. #3 is where versatility meets pure power."
-
     },
-
 
     {
         id: 4,
-
         name: "Adwaith Dev",
-
         username: "Pessi",
-
         image: "",
-
         overall: 6.5,
-
         psl: 4.0,
-
         appeal: 9.0,
-
         hair: 7.0,
-
         frame: 7.0,
-
         skin: 7.0,
-
         previousRank: 4,
-
         bio:
             "Pessi. Big appeal with a confident presence."
     },
 
-
     {
         id: 5,
-
         name: "Akshay",
-
         username: "Humble Mogger",
-
         image: "",
-
         overall: 5.4,
-
         psl: 5.0,
-
         appeal: 6.1,
-
         hair: 6.1,
-
         frame: 6.8,
-
         skin: 6.0,
-
         previousRank: 10,
-
         bio:
             "Humble mogger. Quiet confidence with steady stats."
     },
 
-
     {
         id: 6,
-
         name: "Abhinav S Kammath",
-
         username: "Autistic",
-
         image: "Abhinav.jpg",
-
         overall: 6.3,
-
         psl: 7.4,
-
         appeal: 6.2,
-
         hair: 6.5,
-
         frame: 6.0,
-
         skin: 3.0,
-
         previousRank: 7,
-
         bio:
             "The wildcard. Strong PSL with a unique personality."
     },
 
-
     {
         id: 7,
-
         name: "Neeraj M Nair",
-
         username: "Dadbot",
-
         image: "Neeraj.jpg",
-
         overall: 6.8,
-
         psl: 6.4,
-
         appeal: 7.0,
-
         hair: 8.5,
-
         frame: 8.6,
-
         skin: 3.0,
-
         previousRank: 9,
-
         bio:
             "Dadbot. Strong hair and frame stats with veteran energy."
     },
 
-
     {
         id: 8,
-
         name: "Lakshman",
-
         username: "Prince",
-
         image: "",
-
         overall: 5.8,
-
         psl: 4.0,
-
         appeal: 6.8,
-
         hair: 6.7,
-
         frame: 6.5,
-
         skin: 7.7,
-
         previousRank: 8,
-
         bio:
             "Prince. Smooth overall profile with balanced ratings."
     },
 
-
     {
         id: 9,
-
         name: "Kedhar",
-
         username: "Volleyball Aura",
-
         image: "Kedhar.jpg",
-
         overall: 6.0,
-
         psl: 6.0,
-
         appeal: 7.8,
-
         hair: 8.9,
-
         frame: 7.4,
-
         skin: 6.2,
-
         previousRank: 9,
-
         bio:
             "Volleyball Aura. Athletic presence with strong hair and appeal."
     },
 
-
     {
         id: 10,
-
         name: "Aadityan",
-
         username: "Loyal Teen",
-
         image: "aaditya.jpg",
-
         overall: 6.1,
-
         psl: 4.0,
-
         appeal: 6.8,
-
         hair: 8.6,
-
         frame: 6.0,
-
         skin: 6.8,
-
         previousRank: 6,
-
         bio:
             "Loyal Teen. Clean hair score and a loyal presence."
     }
@@ -3354,17 +3129,114 @@ let currentCategory = "overall";
 
 
 /* =========================================================
+   TOP 3 MUSIC
+========================================================= */
+
+const top3Songs = {
+
+    1: "rank1.mp3",
+
+    2: "rank2.mp3",
+
+    3: "rank3.mp3"
+
+};
+
+
+let currentAudio = null;
+
+let stopTimer = null;
+
+
+function playTop3Song(rank) {
+
+    /*
+       Stop any song that is already playing
+    */
+
+    if (currentAudio) {
+
+        currentAudio.pause();
+
+        currentAudio.currentTime = 0;
+
+    }
+
+
+    clearTimeout(stopTimer);
+
+
+    const song =
+        top3Songs[rank];
+
+
+    if (!song) return;
+
+
+    const audio =
+        new Audio(song);
+
+
+    currentAudio =
+        audio;
+
+
+    audio.volume = 0.8;
+
+
+    audio.play()
+        .catch(error => {
+
+            console.log(
+                "Audio could not play:",
+                error
+            );
+
+        });
+
+
+    /*
+       Automatically stop after
+       30 seconds
+    */
+
+    stopTimer =
+        setTimeout(
+            function() {
+
+                if (
+                    currentAudio === audio
+                ) {
+
+                    audio.pause();
+
+                    audio.currentTime = 0;
+
+                    currentAudio = null;
+
+                }
+
+            },
+            30000
+        );
+
+}
+
+
+/* =========================================================
    SORT
 ========================================================= */
 
 function sortedPeople() {
 
-    return [...people].sort((a,b) => {
+    return [...people].sort(
+        (a,b) => {
 
-        return b[currentCategory] -
-               a[currentCategory];
+            return b[currentCategory] -
+                   a[currentCategory];
 
-    });
+        }
+    );
 
 }
 
@@ -3373,7 +3245,11 @@ function sortedPeople() {
    CLICK / DOUBLE CLICK
 ========================================================= */
 
-function addPersonInteractions(element, person) {
+function addPersonInteractions(
+    element,
+    person,
+    podiumRank = null
+) {
 
     let clickTimer = null;
 
@@ -3382,16 +3258,36 @@ function addPersonInteractions(element, person) {
         "click",
         function() {
 
-            clearTimeout(clickTimer);
-
-            clickTimer = setTimeout(
-                function() {
-
-                    openProfile(person);
-
-                },
-                230
+            clearTimeout(
+                clickTimer
             );
+
+
+            clickTimer =
+                setTimeout(
+                    function() {
+
+                        /*
+                           Play music only when
+                           clicking a Top 3 podium card
+                        */
+
+                        if (podiumRank) {
+
+                            playTop3Song(
+                                podiumRank
+                            );
+
+                        }
+
+
+                        openProfile(
+                            person
+                        );
+
+                    },
+                    230
+                );
 
         }
     );
@@ -3403,14 +3299,21 @@ function addPersonInteractions(element, person) {
 
             e.preventDefault();
 
-            clearTimeout(clickTimer);
+
+            clearTimeout(
+                clickTimer
+            );
+
 
             document
                 .getElementById("modal")
                 .classList
                 .remove("show");
 
-            openBio(person);
+
+            openBio(
+                person
+            );
 
         }
     );
@@ -3590,129 +3493,141 @@ function renderLeaderboard() {
 
 
     const filtered =
-        sorted.filter(person => {
+        sorted.filter(
+            person => {
 
-            return (
+                return (
 
-                person.name
-                    .toLowerCase()
-                    .includes(search)
+                    person.name
+                        .toLowerCase()
+                        .includes(search)
 
-                ||
+                    ||
 
-                person.username
-                    .toLowerCase()
-                    .includes(search)
+                    person.username
+                        .toLowerCase()
+                        .includes(search)
 
-            );
+                );
 
-        });
+            }
+        );
 
 
     container.innerHTML = "";
 
 
-    filtered.forEach(person => {
+    filtered.forEach(
+        person => {
 
-        const actualRank =
-            sorted.findIndex(
-                p => p.id === person.id
-            ) + 1;
-
-
-        const movement =
-            person.previousRank -
-            actualRank;
+            const actualRank =
+                sorted.findIndex(
+                    p => p.id === person.id
+                ) + 1;
 
 
-        let movementHTML = "";
+            const movement =
+                person.previousRank -
+                actualRank;
 
 
-        if (movement > 0) {
-
-            movementHTML =
-                `<span class="up">
-                    ▲ ${movement}
-                </span>`;
-
-        }
-
-        else if (movement < 0) {
-
-            movementHTML =
-                `<span class="down">
-                    ▼ ${Math.abs(movement)}
-                </span>`;
-
-        }
-
-        else {
-
-            movementHTML =
-                `<span class="same">
-                    —
-                </span>`;
-
-        }
+            let movementHTML =
+                "";
 
 
-        const row =
-            document.createElement(
-                "div"
-            );
+            if (
+                movement > 0
+            ) {
+
+                movementHTML =
+                    `<span class="up">
+                        ▲ ${movement}
+                    </span>`;
+
+            }
+
+            else if (
+                movement < 0
+            ) {
+
+                movementHTML =
+                    `<span class="down">
+                        ▼ ${Math.abs(movement)}
+                    </span>`;
+
+            }
+
+            else {
+
+                movementHTML =
+                    `<span class="same">
+                        —
+                    </span>`;
+
+            }
 
 
-        row.className = "row";
+            const row =
+                document.createElement(
+                    "div"
+                );
 
 
-        row.innerHTML = `
+            row.className =
+                "row";
 
-            <div class="rank">
-                #${actualRank}
-            </div>
 
-            <div class="person">
+            row.innerHTML = `
 
-                <img
-                    class="avatar"
-                    src="${person.image}"
-                    alt="${person.name}"
-                >
+                <div class="rank">
+                    #${actualRank}
+                </div>
 
-                <div>
+                <div class="person">
 
-                    <div class="person-name">
-                        ${person.name}
-                    </div>
+                    <img
+                        class="avatar"
+                        src="${person.image}"
+                        alt="${person.name}"
+                    >
 
-                    <div class="username">
-                        ${person.username}
+                    <div>
+
+                        <div class="person-name">
+                            ${person.name}
+                        </div>
+
+                        <div class="username">
+                            ${person.username}
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <div class="score">
+                    ${person[currentCategory].toFixed(1)}
+                </div>
 
-            <div class="score">
-                ${person[currentCategory].toFixed(1)}
-            </div>
+                <div class="movement">
+                    ${movementHTML}
+                </div>
 
-            <div class="movement">
-                ${movementHTML}
-            </div>
-
-        `;
+            `;
 
 
-        addPersonInteractions(
-            row,
-            person
-        );
+            addPersonInteractions(
+                row,
+                person
+            );
 
 
-        container.appendChild(row);
+            container.appendChild(
+                row
+            );
 
-    });
+        }
+    );
 
 }
 
@@ -3761,13 +3676,17 @@ function renderPodium() {
             let realRank;
 
 
-            if (index === 0) {
+            if (
+                index === 0
+            ) {
 
                 realRank = 2;
 
             }
 
-            else if (index === 1) {
+            else if (
+                index === 1
+            ) {
 
                 realRank = 1;
 
@@ -3785,12 +3704,6 @@ function renderPodium() {
                     "div"
                 );
 
-
-            /*
-               THIS IS IMPORTANT:
-               Each rank receives its
-               own premium effect.
-            */
 
             card.className =
                 "podium-card rank-" +
@@ -3842,13 +3755,21 @@ function renderPodium() {
             `;
 
 
+            /*
+               Pass the actual Top 3 rank
+               so the correct song plays.
+            */
+
             addPersonInteractions(
                 card,
-                person
+                person,
+                realRank
             );
 
 
-            container.appendChild(card);
+            container.appendChild(
+                card
+            );
 
         }
     );
@@ -3866,64 +3787,68 @@ function renderStats() {
         sortedPeople();
 
 
-    let biggestRiser = null;
+    let biggestRiser =
+        null;
 
-    let biggestDrop = null;
-
-
-    people.forEach(person => {
-
-        const rank =
-            sorted.findIndex(
-                p => p.id === person.id
-            ) + 1;
+    let biggestDrop =
+        null;
 
 
-        const movement =
-            person.previousRank -
-            rank;
+    people.forEach(
+        person => {
+
+            const rank =
+                sorted.findIndex(
+                    p => p.id === person.id
+                ) + 1;
 
 
-        if (
-            movement > 0 &&
-            (
-                !biggestRiser ||
-                movement >
-                biggestRiser.movement
-            )
-        ) {
+            const movement =
+                person.previousRank -
+                rank;
 
-            biggestRiser = {
 
-                person,
+            if (
+                movement > 0 &&
+                (
+                    !biggestRiser ||
+                    movement >
+                    biggestRiser.movement
+                )
+            ) {
 
-                movement
+                biggestRiser = {
 
-            };
+                    person,
+
+                    movement
+
+                };
+
+            }
+
+
+            if (
+                movement < 0 &&
+                (
+                    !biggestDrop ||
+                    movement <
+                    biggestDrop.movement
+                )
+            ) {
+
+                biggestDrop = {
+
+                    person,
+
+                    movement
+
+                };
+
+            }
 
         }
-
-
-        if (
-            movement < 0 &&
-            (
-                !biggestDrop ||
-                movement <
-                biggestDrop.movement
-            )
-        ) {
-
-            biggestDrop = {
-
-                person,
-
-                movement
-
-            };
-
-        }
-
-    });
+    );
 
 
     document
@@ -3971,36 +3896,64 @@ function renderAll() {
 
 document
     .querySelectorAll(".category")
-    .forEach(button => {
+    .forEach(
+        button => {
 
-        button.addEventListener(
-            "click",
-            function() {
+            button.addEventListener(
+                "click",
+                function() {
 
-                document
-                    .querySelectorAll(".category")
-                    .forEach(btn => {
+                    document
+                        .querySelectorAll(
+                            ".category"
+                        )
+                        .forEach(
+                            btn => {
 
-                        btn.classList
-                            .remove("active");
+                                btn.classList
+                                    .remove(
+                                        "active"
+                                    );
 
-                    });
-
-
-                this.classList
-                    .add("active");
-
-
-                currentCategory =
-                    this.dataset.category;
+                            }
+                        );
 
 
-                renderAll();
+                    this.classList
+                        .add("active");
 
-            }
-        );
 
-    });
+                    currentCategory =
+                        this.dataset.category;
+
+
+                    /*
+                       Stop music when
+                       changing category.
+                    */
+
+                    if (currentAudio) {
+
+                        currentAudio.pause();
+
+                        currentAudio.currentTime = 0;
+
+                        currentAudio = null;
+
+                    }
+
+                    clearTimeout(
+                        stopTimer
+                    );
+
+
+                    renderAll();
+
+                }
+            );
+
+        }
+    );
 
 
 /* =========================================================
@@ -4040,7 +3993,9 @@ document
         "click",
         function(e) {
 
-            if (e.target === this) {
+            if (
+                e.target === this
+            ) {
 
                 this.classList
                     .remove("show");
@@ -4076,7 +4031,9 @@ document
         "click",
         function(e) {
 
-            if (e.target === this) {
+            if (
+                e.target === this
+            ) {
 
                 this.classList
                     .remove("show");
@@ -4095,7 +4052,9 @@ document.addEventListener(
     "keydown",
     function(e) {
 
-        if (e.key === "Escape") {
+        if (
+            e.key === "Escape"
+        ) {
 
             document
                 .getElementById("modal")
@@ -4122,47 +4081,61 @@ document
     .querySelectorAll(
         ".nav-btn[data-page]"
     )
-    .forEach(button => {
+    .forEach(
+        button => {
 
-        button.addEventListener(
-            "click",
-            function() {
+            button.addEventListener(
+                "click",
+                function() {
 
-                document
-                    .querySelectorAll(".nav-btn")
-                    .forEach(btn => {
+                    document
+                        .querySelectorAll(
+                            ".nav-btn"
+                        )
+                        .forEach(
+                            btn => {
 
-                        btn.classList
-                            .remove("active");
+                                btn.classList
+                                    .remove(
+                                        "active"
+                                    );
 
-                    });
-
-
-                this.classList
-                    .add("active");
-
-
-                document
-                    .querySelectorAll(".page")
-                    .forEach(page => {
-
-                        page.classList
-                            .remove("active");
-
-                    });
+                            }
+                        );
 
 
-                document
-                    .getElementById(
-                        this.dataset.page
-                    )
-                    .classList
-                    .add("active");
+                    this.classList
+                        .add("active");
 
-            }
-        );
 
-    });
+                    document
+                        .querySelectorAll(
+                            ".page"
+                        )
+                        .forEach(
+                            page => {
+
+                                page.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+                            }
+                        );
+
+
+                    document
+                        .getElementById(
+                            this.dataset.page
+                        )
+                        .classList
+                        .add("active");
+
+                }
+            );
+
+        }
+    );
 
 
 /* =========================================================
