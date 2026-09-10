@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BVME Chad Ranking</title>
 
 <style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 * {
     margin: 0;
@@ -1105,6 +1110,194 @@ main {
 
 .same {
     color: #82758b;
+}
+
+
+/* =========================================================
+   NEWS
+========================================================= */
+
+.news-grid {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+.news-card {
+    position: relative;
+
+    padding: 25px 28px;
+
+    border-radius: 21px;
+
+    border:
+        1px solid rgba(168,85,247,0.18);
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(168,85,247,0.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(30,11,48,0.88),
+            rgba(14,6,24,0.92)
+        );
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.25),
+        inset 0 0 25px rgba(168,85,247,0.025);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+.news-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #c084fc,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 0 18px rgba(168,85,247,0.7);
+}
+
+.news-card:hover {
+    transform:
+        translateX(6px);
+
+    border-color:
+        rgba(168,85,247,0.55);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.4),
+        0 0 30px rgba(168,85,247,0.14);
+}
+
+.news-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 13px;
+}
+
+.news-category {
+    display: inline-block;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(168,85,247,0.12);
+
+    border:
+        1px solid rgba(168,85,247,0.25);
+
+    color: #d8b4fe;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+}
+
+.news-new {
+    display: inline-block;
+
+    margin-left: 7px;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(168,85,247,0.2);
+
+    border:
+        1px solid rgba(192,132,252,0.3);
+
+    color: #f3e8ff;
+
+    font-size: 9px;
+
+    font-weight: 1000;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 15px rgba(168,85,247,0.2);
+}
+
+.news-date {
+    color: #756680;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.news-title {
+    font-size: 21px;
+
+    font-weight: 1000;
+
+    color: white;
+
+    margin-bottom: 9px;
+
+    line-height: 1.3;
+}
+
+.news-icon {
+    font-size: 26px;
+
+    margin-right: 9px;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(168,85,247,0.5)
+        );
+}
+
+.news-description {
+    color: #a99bb8;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 900px;
 }
 
 
@@ -2346,6 +2539,27 @@ main {
         font-size: 12px;
     }
 
+    .news-card {
+        padding:
+            20px 18px;
+    }
+
+    .news-top {
+        align-items: flex-start;
+    }
+
+    .news-date {
+        font-size: 9px;
+    }
+
+    .news-title {
+        font-size: 17px;
+    }
+
+    .news-description {
+        font-size: 13px;
+    }
+
 }
 
 
@@ -2444,10 +2658,33 @@ body.light .search {
         rgba(255,255,255,0.8);
 }
 
+body.light .news-card {
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(168,85,247,0.10),
+            transparent 35%
+        ),
+        rgba(255,255,255,0.75);
+}
+
+body.light .news-title {
+    color: #1a1022;
+}
+
+body.light .news-description {
+    color: #6f6179;
+}
+
 </style>
 </head>
 
 <body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav>
 
@@ -2474,6 +2711,14 @@ body.light .search {
         </button>
 
         <button
+            class="nav-btn"
+            data-page="newsPage">
+
+            News
+
+        </button>
+
+        <button
             class="nav-btn vote-btn"
             id="voteButton">
 
@@ -2494,7 +2739,16 @@ body.light .search {
 </nav>
 
 
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
 <main>
+
+
+<!-- =========================================================
+     LEADERBOARD PAGE
+========================================================= -->
 
 <section
     class="page active"
@@ -2525,6 +2779,8 @@ body.light .search {
 
     </div>
 
+
+    <!-- CATEGORIES -->
 
     <div class="categories">
 
@@ -2579,6 +2835,8 @@ body.light .search {
     </div>
 
 
+    <!-- TOP 3 -->
+
     <h2 class="section-title">
         Top 3 Chads
     </h2>
@@ -2586,9 +2844,10 @@ body.light .search {
     <div
         class="podium"
         id="podium">
-
     </div>
 
+
+    <!-- STATS -->
 
     <div class="stats-grid">
 
@@ -2645,6 +2904,8 @@ body.light .search {
     </div>
 
 
+    <!-- LEADERBOARD -->
+
     <h2 class="section-title">
         Leaderboard
     </h2>
@@ -2673,12 +2934,14 @@ body.light .search {
     <div
         class="leaderboard"
         id="leaderboard">
-
     </div>
-
 
 </section>
 
+
+<!-- =========================================================
+     HALL OF FAME PAGE
+========================================================= -->
 
 <section
     class="page"
@@ -2720,8 +2983,46 @@ body.light .search {
 
 </section>
 
+
+<!-- =========================================================
+     NEWS PAGE
+========================================================= -->
+
+<section
+    class="page"
+    id="newsPage">
+
+    <div class="hero">
+
+        <div class="hero-tag">
+            BVME · NEWS & UPDATES
+        </div>
+
+        <h1>
+            NEWS<br>& UPDATES
+        </h1>
+
+        <p>
+            The latest happenings from the BVME Chad Rankings.
+        </p>
+
+    </div>
+
+
+    <div
+        class="news-grid"
+        id="newsGrid">
+    </div>
+
+</section>
+
+
 </main>
 
+
+<!-- =========================================================
+     NORMAL PROFILE MODAL
+========================================================= -->
 
 <div
     class="modal"
@@ -2835,6 +3136,10 @@ body.light .search {
 </div>
 
 
+<!-- =========================================================
+     FULL SCREEN BIO
+========================================================= -->
+
 <div
     class="bio-modal"
     id="bioModal">
@@ -2870,9 +3175,7 @@ body.light .search {
         </div>
 
         <h2 id="bioName">
-
             Player
-
         </h2>
 
         <p
@@ -2952,6 +3255,7 @@ body.light .search {
 
 <script>
 
+
 /* =========================================================
    PEOPLE DATA
 ========================================================= */
@@ -3001,7 +3305,7 @@ const people = [
         hair: 7.7,
         frame: 8.9,
         skin: 8.7,
-        previousRank: 2,
+        previousRank: 3,
         bio:
             "The All-Rounder. Holding the #3 spot, he’s the definition of a complete Chad — bringing the perfect combination of skill, confidence, appeal, and an absolutely beast-like physique. His frame is easily one of the strongest on the leaderboard, giving him a presence that stands out the moment he walks in. Whether it’s athletic ability, overall style, or raw physical presence, he has something in every category. He’s not just good at one thing — he’s built to dominate them all. #3 is where versatility meets pure power."
     },
@@ -3065,7 +3369,7 @@ const people = [
         hair: 8.5,
         frame: 8.6,
         skin: 3.0,
-        previousRank: 9,
+        previousRank: 4,
         bio:
             "Dadbot. Two years ago, he was just another fat guy. Two years later, he built himself into a muscular, chiselled machine. No shortcuts, no overnight transformation — just two years of discipline, pain, and consistency. He turned every workout into progress and every excuse into motivation. The transformation speaks for itself: from carrying extra weight to carrying an aura that demands respect. Dadbot didn’t inherit the physique — he earned it."
     },
@@ -3122,6 +3426,69 @@ const people = [
 
 
 /* =========================================================
+   NEWS DATA
+========================================================= */
+
+/*
+   ADD NEW NEWS TO THE TOP OF THIS LIST.
+
+   The first news item automatically gets
+   the NEW badge.
+*/
+
+const newsData = [
+
+    {
+        icon: "👑",
+        category: "RANKING",
+        date: "September 10, 2026",
+        title: "Sidharth takes the #1 spot",
+        description:
+            "The Athlete has officially stormed into the #1 spot on the BVME Chad Ranking, dethroning the previous Chad and taking his place at the very top. After climbing through the ranks, Sidharth has now claimed the crown and established himself as the new #1."
+
+    },
+
+    {
+        icon: "🥀",
+        category: "Nerfed",
+        date: "September 10, 2026",
+        title: "Riyan Lost The Throne",
+        description:
+            "The Honoured One has officially lost the #1 spot on the BVME Chad Ranking due to Dark Circles, Eyebags and Cooked skin. After holding the crown at the top of the leaderboard, Riyan has been pushed down following the latest ranking update. The title now belongs to Sidharth, while Riyan enters a new chapter of the Season 01 rankings. The question now is simple — can The Honoured One reclaim the throne?"
+
+    },
+
+    {
+        icon: "💪",
+        category: "PLAYER",
+        date: "September 10, 2026",
+        title: "Dadbot transformation added",
+        description:
+            "Neeraj M Nair's player biography has been updated, highlighting his two-year transformation and dedication."
+    },
+
+    {
+        icon: "🏆",
+        category: "WEBSITE",
+        date: "September 9, 2026",
+        title: "BVME Chad Ranking goes live",
+        description:
+            "The unofficial BVME Chad Ranking is now live with rankings, player bios, category scores and the Hall of Fame."
+    },
+
+    {
+        icon: "⚡",
+        category: "VOTING",
+        date: "September 9, 2026",
+        title: "Voting will be available soon",
+        description:
+            "Voting system is so important due to people calling the ranks rigged"
+    }
+
+];
+
+
+/* =========================================================
    VARIABLES
 ========================================================= */
 
@@ -3149,10 +3516,6 @@ let stopTimer = null;
 
 
 function playTop3Song(rank) {
-
-    /*
-       Stop any song that is already playing
-    */
 
     if (currentAudio) {
 
@@ -3194,11 +3557,6 @@ function playTop3Song(rank) {
 
         });
 
-
-    /*
-       Automatically stop after
-       30 seconds
-    */
 
     stopTimer =
         setTimeout(
@@ -3266,11 +3624,6 @@ function addPersonInteractions(
             clickTimer =
                 setTimeout(
                     function() {
-
-                        /*
-                           Play music only when
-                           clicking a Top 3 podium card
-                        */
 
                         if (podiumRank) {
 
@@ -3648,11 +4001,6 @@ function renderPodium() {
         sortedPeople();
 
 
-    /*
-       Visual order:
-       #2 → #1 → #3
-    */
-
     const topThree = [
 
         sorted[1],
@@ -3754,11 +4102,6 @@ function renderPodium() {
 
             `;
 
-
-            /*
-               Pass the actual Top 3 rank
-               so the correct song plays.
-            */
 
             addPersonInteractions(
                 card,
@@ -3876,6 +4219,106 @@ function renderStats() {
 
 
 /* =========================================================
+   NEWS RENDERER
+========================================================= */
+
+function renderNews() {
+
+    const container =
+        document.getElementById(
+            "newsGrid"
+        );
+
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    newsData.forEach(
+        (news,index) => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "news-card";
+
+
+            card.innerHTML = `
+
+                <div class="news-top">
+
+                    <div>
+
+                        <span class="news-category">
+
+                            ${news.category}
+
+                        </span>
+
+
+                        ${
+                            index === 0
+                            ?
+                            `
+                            <span class="news-new">
+                                NEW
+                            </span>
+                            `
+                            :
+                            ""
+                        }
+
+                    </div>
+
+
+                    <div class="news-date">
+
+                        ${news.date}
+
+                    </div>
+
+                </div>
+
+
+                <div class="news-title">
+
+                    <span class="news-icon">
+
+                        ${news.icon}
+
+                    </span>
+
+                    ${news.title}
+
+                </div>
+
+
+                <div class="news-description">
+
+                    ${news.description}
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
    RENDER ALL
 ========================================================= */
 
@@ -3886,6 +4329,8 @@ function renderAll() {
     renderPodium();
 
     renderStats();
+
+    renderNews();
 
 }
 
@@ -3926,11 +4371,6 @@ document
                     currentCategory =
                         this.dataset.category;
 
-
-                    /*
-                       Stop music when
-                       changing category.
-                    */
 
                     if (currentAudio) {
 
